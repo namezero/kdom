@@ -1,4 +1,4 @@
-# Project Title
+# K'Dom
 Script d'installation de K'Dom sur Armbian stretch
 ## Installation
 ```
