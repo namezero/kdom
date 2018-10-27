@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-SETUP_DIR="/root/setup"
+SETUP_DIR=$PWD
 apt-get update  # To get the latest package listsapt-get update -y
 apt-get upgrade -y
 apt-get install samba -y
