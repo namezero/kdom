@@ -57,6 +57,14 @@ une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 
 login : admin
 Mot de passe : admin
 ```
+
+#### Mises à jour
+Pour mettre à jour l'application :
+```
+sh ./api.sh
+sh ./ui.sh
+```
+
 #### Prochaine release
 
 Alarme : prise en charge des capteurs de porte, capteurs de présence, sirènes
