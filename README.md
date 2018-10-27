@@ -42,6 +42,7 @@ bash ./install.sh
 une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 de l'opi
 
 #### Codes d'accès
-par défaut :
+```
     login = admin
     mot de passe : admin
+```
