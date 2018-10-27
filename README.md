@@ -1,5 +1,5 @@
 # K'Dom
-![alt text](https://raw.githubusercontent.com/namezero/kdom/master/kdom.png)
+![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/kdom.png)
 
 Script d'installation de K'Dom sur Armbian stretch
 ## Prérequis (orangepi zero)
@@ -44,7 +44,9 @@ Lancer l'installation de KDom, celà prendra quelques minutes, selon votre débi
 ```
 bash ./install.sh
 ```
-Il faudra m'envoyer la clé rsa publique qui sera affichée lors de l'installation (pour accéder au dépot privé)
+Lors de l'installation vous serez invité a saisir/choisir le mot de passe pour MySql, et la config de phpMyAdmin
+
+Il faudra m'envoyer la clé SHA256 qui sera affichée lors de l'installation (pour que je la colle dans bitbucket)
 
 ### Accès à K'Dom
 
@@ -55,3 +57,11 @@ une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 
 login : admin
 Mot de passe : admin
 ```
+
+![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_1.png)
+
+![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_2.png)
+
+![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_3.png)
+
+![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_4.png)
