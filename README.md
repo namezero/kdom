@@ -57,11 +57,21 @@ une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 
 login : admin
 Mot de passe : admin
 ```
+#### Prochaine release
+
+Alarme : prise en charge des capteurs de porte, capteurs de présence, sirènes
+Camera de surveillance : prise en charge des cameras ONVIF
+Senarios avancés
+
+## ScreenShots
 
 ![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_1.png)
 
+
 ![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_2.png)
 
+
 ![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_3.png)
+
 
 ![alt text](https://raw.githubusercontent.com/namezero/kdom/master/images/Screenshot_4.png)
