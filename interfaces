@@ -19,7 +19,7 @@ iface wlan0 inet static
  gateway 192.168.0.254
 # broadcast 192.168.0.255
  wpa-ssid Khaled
- wpa-psk notebook
+ wpa-psk motdepassewifi
 dns-nameservers 8.8.8.8 8.8.4.4
 
 
