@@ -28,12 +28,20 @@ Au passage, mettre le bon timezone :
     Personal/Timezone
 ```
 Changer aussi le hostname ->KDom
-```
 
 ## Installation
+
 ```
 git clone https://github.com/namezero/kdom.git
 cd kdom
 bash ./install.sh
 ```
 
+### Accès à K'Dom
+
+une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 de l'opi
+
+#### Codes d'accès
+par défaut :
+    login = admin
+    mot de passe : admin
