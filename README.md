@@ -8,7 +8,7 @@ Télécharger et installer Win32diskimager
 ```
 https://sourceforge.net/projects/win32diskimager/files/latest/download
 ```
-Télécharger l'image armbian stretch
+Télécharger et décompresser l'image armbian stretch
 
 ```
 https://dl.armbian.com/orangepizero/archive/Armbian_5.59_Orangepizero_Debian_stretch_next_4.14.65.7z
@@ -52,6 +52,6 @@ une fois l'installation terminée, vous pouvez accéder à K'Dom sur le port 80 
 
 #### Codes d'accès
 ```
-    login = admin
-    mot de passe : admin
+login : admin
+Mot de passe : admin
 ```
