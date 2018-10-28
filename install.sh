@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 SETUP_DIR=$PWD
-apt-get update  # To get the latest package listsapt-get update -y
+apt-get update
 apt-get upgrade -y
 apt-get install samba -y
 apt-get install apache2 -y
