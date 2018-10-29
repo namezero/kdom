@@ -12,15 +12,8 @@ if [ $? != 0 ]
 then
     # Restart the wireless interface
     echo "restarting wlan0"
-    modprobe xradio_wlan
-    iwconfig wlan0 power on
-    sleep 5
     ifdown wlan0
-    sleep 5
+    sleep 10
     ifup wlan0
-    sleep 5
-    ifup wlan0
-    sleep 1
-    /etc/init.d/mosquitto restart
 
 fi
