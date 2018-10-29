@@ -37,7 +37,7 @@ sh ${SETUP_DIR}/ui.sh
 crontab -l > mycron
 #echo new cron into cron file
 echo "0 0 * * * /usr/sbin/ntpdate-debian" >> mycron
-echo "*/2 * * * *   root    /var/node/kdom/api/services/wifi.sh" >> mycron
+echo "*/2 * * * *   root    /var/node/kdom/api/services/setup/wifi.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
