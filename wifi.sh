@@ -20,8 +20,11 @@ then
     sleep 5
     sudo ifdown wlan0 --ignore-error
     echo "ifdown wlan0"
-    sleep 10
+    sleep 5
+    sudo ifup wlan0
     sudo ifup wlan0 --ignore-error
+    sleep 5
+    sudo ifup wlan0
     echo "ifup wlan0"
 
     echo "restarting network service"
