@@ -12,8 +12,8 @@ if [ $? != 0 ]
 then
     # Restart the wireless interface
     echo "restarting wlan0"
-    ifdown wlan0
+    ifdown wlan0 -ignore-error
     sleep 10
-    ifup wlan0
+    ifup wlan0 -ignore-error
 
 fi
