@@ -13,6 +13,7 @@ then
     # Restart the wireless interface
     systemctl stop network-manager.service
     systemctl disable network-manager.service
+    /etc/init.d/networking restart
     echo "restarting wlan0"
     sudo ifconfig wlan0 down
     echo "ifconfig wlan0 down"
