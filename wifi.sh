@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # */5 *   * * *   root    /var/node/domotique/server/services/wifi-rebooter.sh
 
@@ -11,11 +11,20 @@ ping -I wlan0 -c2 ${SERVER} > /dev/null
 if [ $? != 0 ]
 then
     # Restart the wireless interface
+    systemctl stop network-manager.service
+    systemctl disable network-manager.service
     echo "restarting wlan0"
-    ifconfig wlan0 down
-    ifconfig wlan0 up
-    ifdown wlan0 -ignore-error
+    sudo ifconfig wlan0 down
+    echo "ifconfig wlan0 down"
+    #ifconfig wlan0 up
+    sleep 5
+    sudo ifdown wlan0
+    echo "ifdown wlan0"
     sleep 10
-    ifup wlan0 -ignore-error
+    sudo ifup wlan0
+    echo "ifup wlan0"
+
+    echo "restarting network service"
+   pm2 restart NETWORK
 
 fi
