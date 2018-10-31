@@ -15,6 +15,7 @@ echo "Configuration de apache"
 /etc/init.d/apache2 restart
 echo "Configuration des services systemd"
 find /var/node/kdom/api/services/ -type f -name "*.sh" -print0 | xargs -0 dos2unix
+chmod +x /var/node/kdom/api/services/setup/wifi.sh
 \cp /var/node/kdom/api/services/mosquitto.service /etc/systemd/system/mosquitto.service
 \cp /var/node/kdom/api/services/xradio.service /etc/systemd/system/xradio.service
 echo "Démarrage des services systemd"

@@ -16,6 +16,7 @@ npm install pm2 -g
 apt-get install dos2unix -y
 ../apt autoremove -y
 dpkg-reconfigure tzdata
+dpkg-reconfigure resolvconf
 \cp ${SETUP_DIR}/interfaces /etc/network/interfaces
 sh ${SETUP_DIR}/mysql.sh
 ssh-keygen
