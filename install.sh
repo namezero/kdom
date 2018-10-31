@@ -34,6 +34,7 @@ cd /var/node/kdom/
 git init
 sh ${SETUP_DIR}/api.sh
 sh ${SETUP_DIR}/ui.sh
+chmod +x /var/node/kdom/api/services/setup/wifi.sh
 #write out current crontab
 crontab -l > mycron
 #echo new cron into cron file
