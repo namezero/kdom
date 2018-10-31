@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 SETUP_DIR=$PWD
+PASSWORD="Uw206Ttu"
 apt-get update
 apt-get upgrade -y
 apt-get install samba -y
 apt-get install apache2 -y
 apt-get install php libapache2-mod-php -y
 apt-get install mysql-server php-mysql -y
+
+echo 'phpmyadmin phpmyadmin/dbconfig-install boolean true' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/app-password-confirm password ${PASSWORD}' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/admin-pass password ${PASSWORD}' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/mysql/app-pass password ${PASSWORD}' | debconf-set-selections
+echo 'phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2' | debconf-set-selections
+
 apt-get install phpmyadmin -y
 apt-get install mosquitto -y
 apt-get install mosquitto-clients -y
@@ -15,7 +23,9 @@ apt-get install npm -y
 npm install pm2 -g
 apt-get install dos2unix -y
 ../apt autoremove -y
-dpkg-reconfigure tzdata
+echo "Europe/Dublin" > /etc/timezone
+dpkg-reconfigure -f noninteractive tzdata
+#dpkg-reconfigure tzdata
 dpkg-reconfigure resolvconf
 \cp ${SETUP_DIR}/interfaces /etc/network/interfaces
 sh ${SETUP_DIR}/mysql.sh
@@ -35,7 +45,7 @@ cd /var/node/kdom/
 git init
 sh ${SETUP_DIR}/api.sh
 sh ${SETUP_DIR}/ui.sh
-chmod +x /var/node/kdom/api/services/setup/wifi.sh
+#sudo chmod +x /var/node/kdom/api/services/setup/wifi.sh
 #write out current crontab
 crontab -l > mycron
 #echo new cron into cron file

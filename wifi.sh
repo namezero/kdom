@@ -16,12 +16,12 @@ then
     echo "restarting wlan0"
     sudo ifconfig wlan0 down
     echo "ifconfig wlan0 down"
-    #ifconfig wlan0 up
+    ifconfig wlan0 up
     sleep 5
-    sudo ifdown wlan0
+    sudo ifdown wlan0 --ignore-error
     echo "ifdown wlan0"
     sleep 10
-    sudo ifup wlan0
+    sudo ifup wlan0 --ignore-error
     echo "ifup wlan0"
 
     echo "restarting network service"
