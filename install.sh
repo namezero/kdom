@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 SETUP_DIR=$PWD
 PASSWORD="Uw206Ttu"
+#sh -c "wpa_passphrase MAX notebook >> /etc/wpa_supplicant/wpa_supplicant.conf"
+#dans interface wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 apt-get update
 apt-get upgrade -y
 apt-get install samba -y
