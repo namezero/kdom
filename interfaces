@@ -4,7 +4,7 @@ auto lo
 iface lo inet loopback
 
 allow-hotplug eth0
-#iface eth0 inet dhcp
+iface eth0 inet dhcp
 
 #iface eth0 inet static
 # address 192.168.0.28
@@ -18,8 +18,9 @@ iface wlan0 inet static
  netmask 255.255.255.0
  gateway 192.168.0.254
 # broadcast 192.168.0.255
- wpa-ssid Khaled
- wpa-psk motdepassewifi
+ wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+ #wpa-ssid Khaled
+ #wpa-psk motdepassewifi
 dns-nameservers 8.8.8.8 8.8.4.4
 
 
