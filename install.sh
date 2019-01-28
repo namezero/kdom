@@ -53,6 +53,7 @@ crontab -l > mycron
 #echo new cron into cron file
 echo "0 0 * * * /usr/sbin/ntpdate-debian" >> mycron
 echo "*/5 * * * *  sh /var/node/kdom/api/services/setup/wifi.sh" >> mycron
+echo "0 4   *   *   *    /sbin/shutdown -r +5" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
