@@ -52,11 +52,18 @@ sh ${SETUP_DIR}/ui.sh
 crontab -l > mycron
 #echo new cron into cron file
 echo "0 0 * * * /usr/sbin/ntpdate-debian" >> mycron
-echo "*/5 * * * *  sh /var/node/kdom/api/services/setup/wifi.sh" >> mycron
+echo "*/5 * * * *  sh /var/node/kdom/api/services/wifi.sh" >> mycron
 echo "0 4   *   *   *    /sbin/shutdown -r +5" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
+
+echo "echo \"Starting wifi...\"" >> myRcLocal
+echo "sudo /usr/bin/nice -n -10 /var/node/kdom/api/services/wifi.sh &" >> myRcLocal
+echo "exit 0" >> myRcLocal
+echo "$myRcLocal" >> /etc/rc.local
+rm myRcLocal
+
 echo "Fin de l'installation"
 
 #apache2
