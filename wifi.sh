@@ -1,34 +1,64 @@
-#!/bin/sh
+#!/bin/bash
+router_ip=google.fr
+log=/var/log/wifi.log
+wlan=wlan0
+check_interval=10
+nbLoop=23;
 
-# */5 *   * * *   root    /var/node/domotique/server/services/wifi-rebooter.sh
+echo "Starting wifi check "
+echo "Starting wifi check " >> ${log}
 
-SERVER=8.8.8.8
+# make sure we aren't running already
+what=`basename $0`
+for p in `ps h -o pid -C ${what}`; do
+        if [[ ${p} != $$ ]]; then
+                exit 0
+        fi
+done
 
-# Only send two pings, sending output to /dev/null
-ping -I wlan0 -c2 ${SERVER} > /dev/null
-#ntpdate fr.pool.ntp.org
-# If the return code from ping ($?) is not 0 (meaning there was an error)
-if [ $? != 0 ]
-then
-    # Restart the wireless interface
-    systemctl stop network-manager.service
-    systemctl disable network-manager.service
-    /etc/init.d/networking restart
-    echo "restarting wlan0"
-    sudo ifconfig wlan0 down
-    echo "ifconfig wlan0 down"
-    ifconfig wlan0 up
-    sleep 5
-    sudo ifdown wlan0 --ignore-error
-    echo "ifdown wlan0"
-    sleep 5
-    sudo ifup wlan0
-    sudo ifup wlan0 --ignore-error
-    sleep 5
-    sudo ifup wlan0
-    echo "ifup wlan0"
-
-    echo "restarting network service"
-   pm2 restart NETWORK
-
+exec 1>> /dev/null
+exec 2>> ${log}
+echo $(date) >> ${log}
+# without check_interval set, we risk a 0 sleep = busy loop
+if [ ! "$check_interval" ]; then
+        echo "No check interval set!" >> ${log}
+        exit 1
 fi
+
+
+startWifi () {
+        echo "---------WIFI OFF ! -------------" >> ${log}
+        echo $(date) >> $log
+        sudo /bin/mount -a
+        echo "ifdown wlan0" >> ${log}
+        sudo ifup ${wlan}
+        sudo ifdown ${wlan}
+        sleep 2
+        echo "ifconfig wlan0 down" >> ${log}
+        sudo ifconfig ${wlan} up
+        sudo ifup ${wlan}
+        sudo ifup --force ${wlan}
+        sudo ifdown ${wlan}
+        sudo ifup ${wlan}
+        sudo ifup ${wlan}
+
+        sudo /bin/mount -a
+       # sudo /sbin/dhclient -v -r
+}
+
+#ifconfig $eth down
+#sudo ifconfig ${wlan} up
+#startWifi
+while [ $nbLoop -gt 0 ]
+do
+        echo $(date)" Check #$nbLoop" >> ${log}
+    ping -c 1 ${router_ip} & wait $!
+    if [ $? != 0 ]; then
+        echo $(date)" attempting restart number $nbLoop..." >> ${log}
+        startWifi
+    fi
+    sleep ${check_interval}
+     nbLoop=$((nbLoop-1))
+done
+        echo $(date)" Fin essais..." >> ${log}
+exit 1
